@@ -26,7 +26,7 @@ namespace JiraFormatter.Processors
     {
         public DataCallProcessor()
         { 
-            Formatters.Add(new PrepareDesc());
+            Formatters.Add(new DescriptionCleanup());
             Formatters.Add(new QGroupTagger());
             Formatters.Add(new MetricTagger());
             Formatters.Add(new DescriptionTagger());

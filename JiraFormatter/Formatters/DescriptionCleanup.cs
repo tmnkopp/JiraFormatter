@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace JiraFormatter.Formatters
 {
-    public class PrepareDesc : IFormatter
+    public class DescriptionCleanup : IFormatter
     { 
         public string Format(string content)
         {
@@ -34,7 +34,7 @@ namespace JiraFormatter.Formatters
             htmlDoc.LoadHtml(content);
             HtmlNodeCollection nodes = htmlDoc.DocumentNode.SelectNodes("//item/description//p");
             Regex rex;
-            foreach (var node in nodes)
+            foreach (var node in nodes) // REMOVE THIS STUFF
             {
             
                 rex = new Regex(@"<p>.{0,5}ISSUE:.{3,100}</p>");

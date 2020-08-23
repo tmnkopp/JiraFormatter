@@ -23,12 +23,18 @@ namespace JiraFormatter.Formatters
                 HtmlNodeCollection listitemnodes = node.SelectNodes("li");
                 int count = listitemnodes.Count();
                 foreach (var listitemnode in listitemnodes)
-                {
-                    if(IsPickList)
+                { 
+                    if (IsPickList)
                         IsPickList = !listitemnode.InnerHtml.Contains("Yes/No");
                     if (IsPickList)
                         IsPickList = !listitemnode.InnerHtml.Contains("Checkbox");
+                    if (IsPickList)
+                        IsPickList = !listitemnode.InnerHtml.Contains("Numeric");
+                    if (IsPickList)
+                        IsPickList = !listitemnode.InnerHtml.Contains("N/A"); 
                 }
+                 
+
                 if (IsPickList)
                     IsPickList = !(count <= 1); 
 
