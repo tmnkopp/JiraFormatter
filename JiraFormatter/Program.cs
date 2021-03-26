@@ -15,13 +15,11 @@ using System.Reflection;
 
 namespace JiraFormatter
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Program.InvokeProcessor(); 
-
-
+            Program.InvokeProcessor();  
         } 
         public static void InvokeProcessor()
         {

@@ -17,9 +17,17 @@ namespace JiraFormatter.Formatters
             string desc = htmlDoc.DocumentNode.SelectSingleNode("//item//description").OuterHtml;
             content = content.Replace(desc , "[desc]");
             string descFormatted = desc;
-            descFormatted = descFormatted.Replace("</description>", "</metric></description>");
+            
             int cnt = 1;
-            foreach (var match in Regex.Matches(descFormatted, @"<p>.{0,5}\d{1,3}\w{1,2}\..{0,5}</p>"))
+            string rex = @"<p>.{0,5}\d{1,3}\w{1,2}\..{0,5}</p>";
+            rex = @"<p>.{0,5}\d{1,3}\w{1,2}\..{0,5}</p>";
+
+            MatchCollection matches = Regex.Matches(descFormatted, @"<p>.{0,5}\d{1,3}\w{1,2}\..{0,5}</p>");
+            if (matches.Count > 0)
+            {
+                descFormatted = descFormatted.Replace("</description>", "</metric></description>");
+            }
+            foreach (var match in matches)
             {
                 string metID = match.ToString(); 
                 if (cnt > 1)

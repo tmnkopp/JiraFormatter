@@ -9,8 +9,8 @@ namespace JiraFormatter.Constants
 {
     public static class AppSettings
     {
-         public static string BasePath = ConfigurationManager.AppSettings["BasePath"].ToString();
-         public static string CommandChar = ConfigurationManager.AppSettings["CommandChar"].ToString();
+        public static string BasePath = "c:\\temp\\jira"; // ConfigurationManager.AppSettings["BasePath"].ToString();
+        public static string CommandChar = "";//  ConfigurationManager.AppSettings["CommandChar"].ToString();
 
        }
 }

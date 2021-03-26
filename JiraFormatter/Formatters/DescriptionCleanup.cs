@@ -29,8 +29,8 @@ namespace JiraFormatter.Formatters
             foreach (string tag in new string[] { "p", "li", "b", "em", "strong" }) 
                 content = content.Replace($"<{tag}></{tag}>", "");
 
-            content = content.Replace($"\n\n", "\n");
-
+            content = content.Replace($"\n\n", "\n"); 
+            
             htmlDoc.LoadHtml(content);
             HtmlNodeCollection nodes = htmlDoc.DocumentNode.SelectNodes("//item/description//p");
             Regex rex;
