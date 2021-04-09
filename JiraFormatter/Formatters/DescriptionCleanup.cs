@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 namespace JiraFormatter.Formatters
 {
     public class DescriptionCleanup : IFormatter
-    { 
+    {
+        //TODO Refactor all IFormatter to handle new inputs (mongo, xml, etc...)
         public string Format(string content)
         {
             content = content.Replace("ol&gt;", "ul&gt;");
@@ -19,8 +20,11 @@ namespace JiraFormatter.Formatters
                 content = content.Replace($"{removeMe}", "");
             
             HtmlDocument htmlDoc = new HtmlDocument();
+            if (!content.Contains("<description>")) 
+                content = $"<item><description>{content}</description></item>";
+           
             htmlDoc.LoadHtml(content);
-            string desc = htmlDoc.DocumentNode.SelectSingleNode("//item/description").InnerHtml; 
+            string desc = htmlDoc.DocumentNode.SelectSingleNode("//item/description")?.InnerHtml; 
             string HTMLdesc = WebUtility.HtmlDecode(desc);
 
             content = content.Replace(desc, HTMLdesc);

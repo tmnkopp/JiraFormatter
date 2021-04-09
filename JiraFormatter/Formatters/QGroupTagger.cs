@@ -10,7 +10,7 @@ namespace JiraFormatter.Formatters
 {
     public class QGroupTagger : IFormatter
     {
- 
+        
         public string Format(string content)
         {
             int cnt = 1;

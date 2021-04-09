@@ -22,6 +22,24 @@ namespace JiraFormatter.Processors
             return content;
         }
     }
+    public class JiraProcessor : BaseProcessor
+    {
+        public JiraProcessor()
+        {
+            Formatters.Add(new DescriptionCleanup());
+            Formatters.Add(new QGroupTagger());
+            Formatters.Add(new MetricTagger());
+            Formatters.Add(new DescriptionTagger());
+            Formatters.Add(new ListTagger());
+        }
+        public override string Process(string content)
+        {
+            content = new DescriptionCleanup().Format(content);
+
+            return base.Process(content);   
+        }
+    }
+
     public class DataCallProcessor : BaseProcessor
     {
         public DataCallProcessor()
